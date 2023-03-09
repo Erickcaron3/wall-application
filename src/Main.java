@@ -2,6 +2,7 @@ import DAO.CompositeBlock;
 import model.Block;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -12,11 +13,15 @@ public class Main {
         Wall wall = new Wall(compositeBlock);
 
         String material = "leaf";
-
         System.out.println("--- List of all blocks by material " + material + " --- \n");
         List<Block> blocksByMaterial = wall.findBlocksByMaterial(material);
-        System.out.println(prepareAllMaterialsByMaterial(blocksByMaterial));
+        System.out.println(preparePrintingOfAllMaterialsByMaterial(blocksByMaterial));
         System.out.println("--- End of all blocks by material " + material + " --- \n");
+
+        String existingColor = "red";
+        System.out.println("--- First block of color " + existingColor + " is: --- \n");
+        System.out.println(preparePrintingOfFirstBlockByColor(wall.findBlockByColor(existingColor)));
+        System.out.println("--- End of the first block of color:  " + existingColor + " --- \n");
 
 
     }
@@ -27,10 +32,14 @@ public class Main {
         return compositeBlock;
     }
 
-    public static String prepareAllMaterialsByMaterial(List<Block> blocks) {
-        return blocks.stream()
+    public static String preparePrintingOfAllMaterialsByMaterial(List<Block> blocksToPrint) {
+        return blocksToPrint.stream()
                 .map(Block::toString)
                 .collect(Collectors.joining(" "));
+    }
+
+    public static String preparePrintingOfFirstBlockByColor(Optional<Block> optionalBlockToPrint) {
+        return optionalBlockToPrint.isPresent() ? optionalBlockToPrint.get().toString() : "Sadly there is no block with the color you're asking for!";
     }
 
 }

@@ -16,12 +16,6 @@ public class CompositeBlock {
         return blocks;
     }
 
-    public void addBlock(Block block) {
-        if (block != null) {
-            blocks.add(block);
-        }
-    }
-
     public void feedBlockList() {
         this.blocks.addAll(createBlockList());
     }
