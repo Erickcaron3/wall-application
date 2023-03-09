@@ -1,3 +1,5 @@
+import model.Block;
+
 import java.util.List;
 import java.util.Optional;
 
