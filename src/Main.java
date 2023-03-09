@@ -16,12 +16,12 @@ public class Main {
         System.out.println("--- List of all blocks by material " + material + " --- \n");
         List<Block> blocksByMaterial = wall.findBlocksByMaterial(material);
         System.out.println(preparePrintingOfAllMaterialsByMaterial(blocksByMaterial));
-        System.out.println("--- End of all blocks by material " + material + " --- \n");
 
         String existingColor = "red";
         System.out.println("--- First block of color " + existingColor + " is: --- \n");
         System.out.println(preparePrintingOfFirstBlockByColor(wall.findBlockByColor(existingColor)));
-        System.out.println("--- End of the first block of color:  " + existingColor + " --- \n");
+
+        System.out.println("--- " + preparePrintingOfCount(wall.count()) + " --- \n");
 
 
     }
@@ -41,5 +41,12 @@ public class Main {
     public static String preparePrintingOfFirstBlockByColor(Optional<Block> optionalBlockToPrint) {
         return optionalBlockToPrint.isPresent() ? optionalBlockToPrint.get().toString() : "Sadly there is no block with the color you're asking for!";
     }
+
+    public static String preparePrintingOfCount(int count) {
+        return count != 0 ?
+                "Our current list of blocks is composed of " + count + " blocks "
+                : "Our current list of blocks is empty!";
+    }
+
 
 }

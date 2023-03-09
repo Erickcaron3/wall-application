@@ -33,7 +33,7 @@ public class Wall implements Structure {
 
     @Override
     public int count() {
-        return 0;
+        return compositeBlock.getBlocks().size();
     }
 
     private boolean isMaterialExisting(String material) {
